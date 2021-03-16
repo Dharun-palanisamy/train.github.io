@@ -9,6 +9,6 @@
 <body>
 <?php
     echo "hello";
-?>123<a href="public/Train Ticket Reservation/login.html"  target="_blank">click here</a>
+?>123<a href="public/Train Ticket Reservation/login.php"  target="_blank">click here</a>
 </body>
 </html>
