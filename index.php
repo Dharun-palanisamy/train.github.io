@@ -9,6 +9,15 @@
 <body>
 <?php
     echo "hello";
+     $conn = pg_connect(getenv("postgres://mjthlopbqtqvkd:a483b85042040a4413668e4212b89932b6276a2a716ed1e3d7b376dc7d33e758@ec2-52-21-252-142.compute-1.amazonaws.com:5432/df56u1c1jatv1b"));
+    if (!$con) 
+   {
+     echo "Database connection failed.";
+   }
+   else 
+   {
+     echo "Database connection success.";
+   }
 ?>123<a href="public/Train Ticket Reservation/login.php"  target="_blank">click here</a>
 </body>
 </html>
