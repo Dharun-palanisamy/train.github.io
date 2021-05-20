@@ -29,6 +29,13 @@ echo "hello";
     catch (PDOException $e) {
     echo 'Connection failed: ' . $e->getMessage();
     }
+    $sql = 'SELECT * FROM users';
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    $rowCount = $stmt->rowCount();
+    $details = $stmt->fetch();
+  
+    print_r ($details);
 ?><a href="public/Train Ticket Reservation/login.php"  target="_blank">click here</a>
 </body>
 </html>
