@@ -8,20 +8,26 @@
 </head>
 <body>
 <?php
-    echo "hello";
-    $db = parse_url(getenv("postgres://mjthlopbqtqvkd:a483b85042040a4413668e4212b89932b6276a2a716ed1e3d7b376dc7d33e758@ec2-52-21-252-142.compute-1.amazonaws.com:5432/df56u1c1jatv1b"));
-    $conn = new PDO("pgsql:" . sprintf(
-        "host=%s;port=%s;user=%s;password=%s;dbname=%s",
-        $db["host"],
-        $db["port"],
-        $db["user"],
-        $db["pass"],
-        ltrim($db["path"], "/")
-    ));
-    if (!$conn) {
-        echo "Database connection failed.";
-    } else {
-        echo "Database connection success.";
+echo "hello";
+    $host = "ec2-52-21-252-142.compute-1.amazonaws.com";
+    $user = "mjthlopbqtqvkd";
+    $password = "a483b85042040a4413668e4212b89932b6276a2a716ed1e3d7b376dc7d33e758";
+    $dbname = "df56u1c1jatv1b";
+    $port = "5432";
+    
+    try{
+      //Set DSN data source name
+        $dsn = "pgsql:host=" . $host . ";port=" . $port .";dbname=" . $dbname . ";user=" . $user . ";password=" . $password . ";";
+    
+    
+      //create a pdo instance
+      $pdo = new PDO($dsn, $user, $password);
+      $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_OBJ);
+      $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
+      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    }
+    catch (PDOException $e) {
+    echo 'Connection failed: ' . $e->getMessage();
     }
 ?><a href="public/Train Ticket Reservation/login.php"  target="_blank">click here</a>
 </body>
